@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: Kafka-producer
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  output:
+    ansi:
+      enabled: ALWAYS
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: product-one
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.value.default.type: com.kafka.producer.model.RecordEntity
+        max.poll.records: 500
+  threads:
+    virtual:
+      enabled: true
+app:
+  kafka:
+    topic: product
+server:
+  port: 8081
