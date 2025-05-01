@@ -1,13 +1,8 @@
 package com.kafka.producer.model;
 
-
-
 import java.math.BigInteger;
 
-
-
-public class RecordEntity {
-
+public class RecordDTO {
 
     private BigInteger id;
 
@@ -21,7 +16,16 @@ public class RecordEntity {
 
     private Double price;
 
+    public RecordDTO(){}
 
+    public RecordDTO(BigInteger id, String name, String competetior, Double conversionFactor, BigInteger fileId, Double price) {
+        this.id = id;
+        this.name = name;
+        this.competetior = competetior;
+        this.conversionFactor = conversionFactor;
+        this.fileId = fileId;
+        this.price = price;
+    }
 
     public BigInteger getId() {
         return id;
@@ -73,13 +77,6 @@ public class RecordEntity {
 
     @Override
     public String toString() {
-        return "RecordEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", competetior='" + competetior + '\'' +
-                ", conversionFactor=" + conversionFactor +
-                ", fileId=" + fileId +
-                ", price=" + price +
-                '}';
+        return "RecordEntity{" + "id=" + id + ", name='" + name + '\'' + ", competetior='" + competetior + '\'' + ", conversionFactor=" + conversionFactor + ", fileId=" + fileId + ", price=" + price + '}';
     }
 }
